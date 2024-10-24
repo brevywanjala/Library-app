@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime,JS
 from sqlalchemy.orm import sessionmaker, relationship ,foreign
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime,date
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 Base = declarative_base()
 db_url = "sqlite:///students.db"
@@ -24,7 +24,12 @@ class School(Base):
     contacts =Column(String(20))
     timestamp = Column(DateTime, default=datetime.utcnow)
     timezone_id= Column(Integer,ForeignKey("timezones.id"))
-    
+    password=Column(String())
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 class Student(Base):
     __tablename__ = 'students'
 
