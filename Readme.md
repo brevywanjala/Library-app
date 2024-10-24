@@ -10,6 +10,7 @@ Admin Dashboard: Manage users and books with an administrative interface.
 Responsive Frontend: A modern React-based user interface that enhances user experience.
 Technology Stack
 Backend: Flask
+
 Frontend: React
 Database: SQLAlchemy (with SQLite or your preferred database)
 Styling: Bootstrap (or any CSS framework of your choice)
